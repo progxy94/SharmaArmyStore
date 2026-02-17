@@ -1,6 +1,7 @@
 import React from 'react';
 import { Facebook, Instagram, Youtube, MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import GoogleAdSense from './GoogleAdSense';
 const Footer = () => {
   const socialLinks = [{
     icon: Facebook,
@@ -82,8 +83,17 @@ const Footer = () => {
 
         </div>
 
+        {/* Ad Block - Footer */}
+        <div className="border-t border-gray-700 mt-12 pt-8 mb-8">
+          <GoogleAdSense 
+            adSlot="5678901234" 
+            format="horizontal"
+            responsive={true}
+          />
+        </div>
+
         {/* Copyright */}
-        <div className="border-t border-gray-700 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+        <div className="border-t border-gray-700 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
           <p className="text-sm text-gray-400">
             © {new Date().getFullYear()} Sharma Army Store. All rights reserved.
           </p>

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
+import GoogleAdSense from '@/components/GoogleAdSense';
 
 const ContactUs = () => {
   const { toast } = useToast();
@@ -193,6 +194,17 @@ const ContactUs = () => {
                 ))}
               </div>
             </motion.div>
+          </div>
+        </section>
+
+        {/* Ad Block - Before Contact Form */}
+        <section className="py-12 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <GoogleAdSense 
+              adSlot="7890123456" 
+              format="horizontal"
+              responsive={true}
+            />
           </div>
         </section>
 

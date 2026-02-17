@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Shield, Target, Users, Award, Briefcase, BadgeCheck, Zap } from 'lucide-react';
+import GoogleAdSense from '@/components/GoogleAdSense';
 
 const AboutUs = () => {
   const expertisePoints = [
@@ -136,6 +137,17 @@ const AboutUs = () => {
                   </motion.div>
                 ))}
              </div>
+          </div>
+        </section>
+
+        {/* Ad Block - After Expertise */}
+        <section className="py-12 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <GoogleAdSense 
+              adSlot="6789012345" 
+              format="horizontal"
+              responsive={true}
+            />
           </div>
         </section>
 

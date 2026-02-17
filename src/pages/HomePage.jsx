@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Shield, Award, Truck, Star } from 'lucide-react';
 import { getFeaturedProducts } from '@/data/products';
 import { Button } from '@/components/ui/button';
+import GoogleAdSense from '@/components/GoogleAdSense';
 
 const HomePage = () => {
   const featuredProducts = getFeaturedProducts();
@@ -84,6 +85,17 @@ const HomePage = () => {
           </div>
         </motion.section>
 
+        {/* Ad Block - Above Featured Products */}
+        <section className="py-8 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <GoogleAdSense 
+              adSlot="1234567890" 
+              format="horizontal"
+              responsive={true}
+            />
+          </div>
+        </section>
+
         {/* Featured Products Section */}
         <section className="py-16 bg-gradient-to-b from-white to-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -139,6 +151,17 @@ const HomePage = () => {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Ad Block - Between Sections */}
+        <section className="py-8 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <GoogleAdSense 
+              adSlot="2345678901" 
+              format="rectangle"
+              responsive={true}
+            />
           </div>
         </section>
 

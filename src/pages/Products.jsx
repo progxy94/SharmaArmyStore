@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Star, Search, SlidersHorizontal, X } from 'lucide-react';
 import { categories, getProductsByCategory, products as allProducts } from '@/data/products';
 import { Button } from '@/components/ui/button';
+import GoogleAdSense from '@/components/GoogleAdSense';
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -154,6 +155,15 @@ const Products = () => {
                     </button>
                   ))}
                 </nav>
+              </div>
+
+              {/* Ad Block in Sidebar */}
+              <div className="mt-6 bg-white rounded-xl shadow-lg p-4 lg:sticky lg:top-96">
+                <GoogleAdSense 
+                  adSlot="3456789012" 
+                  format="vertical"
+                  responsive={true}
+                />
               </div>
             </aside>
 

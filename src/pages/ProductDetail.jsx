@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import { useCart } from '@/context/CartContext';
 import ProductSalesWidget from '@/components/ProductSalesWidget';
+import GoogleAdSense from '@/components/GoogleAdSense';
 
 const reviewData = [
   { name: "Rajesh Kumar", rating: 5, comment: "Absolutely impressive quality. I've used many tactical products before, but this one stands out in terms of durability and comfort. Highly recommended for professionals.", time: "2 weeks ago", helpful: 45 },
@@ -218,6 +219,20 @@ const ProductDetail = () => {
               </Button>
             </motion.div>
           </div>
+
+          {/* Ad Block - After Product Details */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-16 bg-white rounded-2xl shadow-xl p-8"
+          >
+            <GoogleAdSense 
+              adSlot="4567890123" 
+              format="horizontal"
+              responsive={true}
+            />
+          </motion.div>
 
           {/* YouTube Video Placeholder */}
           <motion.div

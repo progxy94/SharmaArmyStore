@@ -21,7 +21,7 @@ import PrivacyPolicy from '@/components/PrivacyPolicy';
 import TermsAndConditions from '@/components/TermsAndConditions';
 import { Toaster } from '@/components/ui/toaster';
 import LiveSalesCounter from '@/components/LiveSalesCounter';
-import RepublicDayPopup from '@/components/RepublicDayPopup';
+// import RepublicDayPopup from '@/components/RepublicDayPopup';
 import ChatBot from '@/components/ChatBot';
 
 function App() {
@@ -58,7 +58,7 @@ function App() {
             </motion.main>
           </AnimatePresence>
           <LiveSalesCounter />
-          <RepublicDayPopup />
+          {/* <RepublicDayPopup /> */}
           <ChatBot />
           <Footer />
           <Toaster />
