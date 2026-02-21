@@ -7,17 +7,20 @@ const Footer = () => {
     icon: Facebook,
     href: 'https://www.facebook.com/profile.php?id=100042494335961',
     label: 'Facebook',
-    color: 'hover:text-blue-500'
+    // use Facebook blue as default, lighten on hover
+    color: 'text-blue-600 hover:text-blue-500'
   }, {
     icon: Youtube,
     href: 'https://youtube.com/@sharmaarmystore?si=MNQ_sHwylYYJlqt_',
     label: 'YouTube',
-    color: 'hover:text-red-500'
+    // YouTube red
+    color: 'text-red-600 hover:text-red-500'
   }, {
     icon: Instagram,
     href: 'https://www.instagram.com/sharma_army_store_23/?utm_source=ig_web_button_share_sheet',
     label: 'Instagram',
-    color: 'hover:text-pink-500'
+    // approximate Instagram pink
+    color: 'text-pink-500 hover:text-pink-400'
   }];
   return <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -53,8 +56,8 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-bold mb-4 text-yellow-400">Follow Us</h3>
               <div className="flex space-x-4 mb-8">
-                {socialLinks.map(social => <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} className={`bg-gray-700 p-3 rounded-lg hover:bg-white transition-all duration-300 transform hover:scale-110 shadow-lg ${social.color}`}>
-                    <social.icon className="w-5 h-5" />
+                {socialLinks.map(social => <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} className={`p-4 rounded-full bg-gray-50 transition-all duration-300 transform hover:scale-110 shadow-md group ${social.color}`}>
+                    <social.icon className="w-8 h-8" />
                   </a>)}
               </div>
             </div>
