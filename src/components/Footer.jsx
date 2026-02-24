@@ -1,25 +1,26 @@
 import React from 'react';
-import { Facebook, Instagram, Youtube, MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
+// use official brand icons for original styling
+import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import GoogleAdSense from './GoogleAdSense';
 const Footer = () => {
   const socialLinks = [{
-    icon: Facebook,
+    icon: FaFacebookF,
     href: 'https://www.facebook.com/profile.php?id=100042494335961',
     label: 'Facebook',
-    // use Facebook blue as default, lighten on hover
+    // keep brand blue for icon
     color: 'text-blue-600 hover:text-blue-500'
   }, {
-    icon: Youtube,
+    icon: FaYoutube,
     href: 'https://youtube.com/@sharmaarmystore?si=MNQ_sHwylYYJlqt_',
     label: 'YouTube',
-    // YouTube red
     color: 'text-red-600 hover:text-red-500'
   }, {
-    icon: Instagram,
+    icon: FaInstagram,
     href: 'https://www.instagram.com/sharma_army_store_23/?utm_source=ig_web_button_share_sheet',
     label: 'Instagram',
-    // approximate Instagram pink
+    // use neutral color; icon itself is multi‑colored by default if desired
     color: 'text-pink-500 hover:text-pink-400'
   }];
   return <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative z-10">
