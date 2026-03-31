@@ -22,9 +22,12 @@ const ProductManagement = () => {
     original_price: '',
     category: '',
     subcategory: '',
+    image: '',
     images: [],
     sizes: [],
     colors: [],
+    rating: '0',
+    total_reviews: '0',
     stock_quantity: 0,
     is_active: true,
     featured: false,
@@ -62,6 +65,8 @@ const ProductManagement = () => {
         ...formData,
         price: parseFloat(formData.price),
         original_price: formData.original_price ? parseFloat(formData.original_price) : null,
+        rating: parseFloat(formData.rating) || 0,
+        total_reviews: parseInt(formData.total_reviews) || 0,
         stock_quantity: parseInt(formData.stock_quantity),
         images: formData.images.length > 0 ? formData.images : null,
         sizes: formData.sizes.length > 0 ? formData.sizes : null,
@@ -114,9 +119,12 @@ const ProductManagement = () => {
       original_price: product.original_price?.toString() || '',
       category: product.category || '',
       subcategory: product.subcategory || '',
+      image: product.image || '',
       images: product.images || [],
       sizes: product.sizes || [],
       colors: product.colors || [],
+      rating: product.rating?.toString() || '0',
+      total_reviews: product.total_reviews?.toString() || '0',
       stock_quantity: product.stock_quantity?.toString() || '0',
       is_active: product.is_active ?? true,
       featured: product.featured ?? false,
@@ -157,9 +165,12 @@ const ProductManagement = () => {
       original_price: '',
       category: '',
       subcategory: '',
+      image: '',
       images: [],
       sizes: [],
       colors: [],
+      rating: '0',
+      total_reviews: '0',
       stock_quantity: 0,
       is_active: true,
       featured: false,
@@ -259,13 +270,46 @@ const ProductManagement = () => {
                 </div>
               </div>
               <div>
-                <Label htmlFor="images">Images (comma-separated URLs)</Label>
+                <Label htmlFor="image">Main Product Image URL</Label>
+                <Input
+                  id="image"
+                  type="url"
+                  value={formData.image}
+                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                  placeholder="https://example.com/main-image.jpg"
+                />
+              </div>
+              <div>
+                <Label htmlFor="images">Additional Images (comma-separated URLs)</Label>
                 <Input
                   id="images"
                   value={formData.images.join(', ')}
                   onChange={(e) => handleImageChange(e.target.value)}
                   placeholder="https://example.com/image1.jpg, https://example.com/image2.jpg"
                 />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="rating">Rating (0-5)</Label>
+                  <Input
+                    id="rating"
+                    type="number"
+                    step="0.1"
+                    min="0"
+                    max="5"
+                    value={formData.rating}
+                    onChange={(e) => setFormData({ ...formData, rating: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="total_reviews">Total Reviews</Label>
+                  <Input
+                    id="total_reviews"
+                    type="number"
+                    value={formData.total_reviews}
+                    onChange={(e) => setFormData({ ...formData, total_reviews: e.target.value })}
+                  />
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>

@@ -9,6 +9,7 @@ import { useToast } from '@/components/ui/use-toast';
 import { useCart } from '@/context/CartContext';
 import ProductSalesWidget from '@/components/ProductSalesWidget';
 import GoogleAdSense from '@/components/GoogleAdSense';
+import { products as localProducts } from '@/data/products';
 
 const reviewData = [
   { name: "Rajesh Kumar", rating: 5, comment: "Absolutely impressive quality. I've used many tactical products before, but this one stands out in terms of durability and comfort. Highly recommended for professionals.", time: "2 weeks ago", helpful: 45 },
@@ -38,6 +39,7 @@ const ProductDetail = () => {
 
   const fetchProduct = async () => {
     try {
+      // First, try to fetch from Supabase (for admin-added UUID products)
       const { data, error } = await supabase
         .from('products')
         .select('*')
@@ -45,11 +47,25 @@ const ProductDetail = () => {
         .eq('is_active', true)
         .single();
 
-      if (error) throw error;
-      setProduct(data);
-
-      if (data?.sizes && data.sizes.length > 0) {
-        setSelectedSize(data.sizes[0]);
+      if (data && !error) {
+        setProduct(data);
+        if (data?.sizes && data.sizes.length > 0) {
+          setSelectedSize(data.sizes[0]);
+        }
+      } else {
+        // If not found in Supabase, try local products (featured products)
+        // Convert id to number for local products lookup
+        const numId = parseInt(id);
+        const localProduct = localProducts.find(p => p.id === numId);
+        
+        if (localProduct) {
+          setProduct(localProduct);
+          if (localProduct?.sizes && localProduct.sizes.length > 0) {
+            setSelectedSize(localProduct.sizes[0]);
+          }
+        } else {
+          console.error('Product not found in Supabase or local data:', id);
+        }
       }
 
       // Set reviews
@@ -57,6 +73,15 @@ const ProductDetail = () => {
       setReviews(shuffled.slice(0, Math.floor(Math.random() * 3) + 5));
     } catch (error) {
       console.error('Error fetching product:', error);
+      // Try local products as fallback if there's an error
+      const numId = parseInt(id);
+      const localProduct = localProducts.find(p => p.id === numId);
+      if (localProduct) {
+        setProduct(localProduct);
+        if (localProduct?.sizes && localProduct.sizes.length > 0) {
+          setSelectedSize(localProduct.sizes[0]);
+        }
+      }
     } finally {
       setLoading(false);
     }
