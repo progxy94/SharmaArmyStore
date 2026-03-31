@@ -5,6 +5,7 @@ import { CartProvider } from '@/context/CartContext';
 import { AuthProvider } from '@/context/AuthContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 import HomePage from '@/pages/HomePage';
 import AboutUs from '@/pages/AboutUs';
 import Products from '@/pages/Products';
@@ -31,6 +32,7 @@ function App() {
       <AuthProvider>
         <CartProvider>
           <div className="min-h-screen flex flex-col">
+            <ScrollToTop />
             <Navigation />
             <AnimatePresence mode="wait">
               <motion.main
