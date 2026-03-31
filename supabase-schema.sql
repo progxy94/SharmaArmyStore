@@ -103,8 +103,12 @@ CREATE TABLE IF NOT EXISTS products (
   category VARCHAR(100),
   subcategory VARCHAR(100),
   images JSONB, -- Array of image URLs
+  image TEXT, -- Main product image for legacy support
   sizes JSONB, -- Array of available sizes
   colors JSONB, -- Array of available colors
+  rating NUMERIC(3,1) DEFAULT 0, -- Average product rating (0-5)
+  total_reviews INTEGER DEFAULT 0, -- Total number of reviews
+  reviews JSONB DEFAULT '[]'::jsonb, -- Array of review objects {name, rating, comment, date}
   stock_quantity INTEGER DEFAULT 0,
   is_active BOOLEAN DEFAULT TRUE,
   featured BOOLEAN DEFAULT FALSE,

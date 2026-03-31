@@ -19,7 +19,11 @@ import OrderConfirmation from '@/pages/OrderConfirmation';
 import OrderDetail from '@/pages/OrderDetail';
 import RefundReturnPolicy from '@/pages/RefundReturnPolicy';
 import PrivacyPolicy from '@/components/PrivacyPolicy';
+import TermsAndConditions from '@/components/TermsAndConditions';
 import AdminPanel from '@/pages/AdminPanel';
+import LiveSalesCounter from '@/components/LiveSalesCounter';
+import ChatBot from '@/components/ChatBot';
+import { Toaster } from '@/components/ui/toaster';
 
 function App() {
   return (
