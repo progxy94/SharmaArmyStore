@@ -85,7 +85,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const signUp = async (email, password, fullName) => {
+  const signUp = async (email, password, fullName, phoneNumber, gender) => {
     try {
       setError(null);
 
@@ -93,27 +93,49 @@ export const AuthProvider = ({ children }) => {
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+          data: {
+            full_name: fullName,
+            phone_number: phoneNumber,
+            gender: gender,
+          },
+        },
       });
 
       if (authError) throw authError;
 
-      // Create user profile
+      // Create user profile (but don't fail signup if this fails)
+      // The database trigger will auto-create the profile on signup
       if (authData.user) {
-        const { error: profileError } = await supabase
-          .from('user_profiles')
-          .insert([
-            {
-              id: authData.user.id,
-              email,
-              full_name: fullName,
-              created_at: new Date().toISOString(),
-            },
-          ]);
+        try {
+          const { error: profileError } = await supabase
+            .from('user_profiles')
+            .insert([
+              {
+                id: authData.user.id,
+                email,
+                full_name: fullName,
+                phone_number: phoneNumber,
+                gender: gender,
+                created_at: new Date().toISOString(),
+              },
+            ]);
 
-        if (profileError) throw profileError;
+          // Log profile error but don't throw - trigger should handle it
+          if (profileError) {
+            console.warn('Profile creation note:', profileError.message);
+          }
+        } catch (profileErr) {
+          console.warn('Profile creation warning:', profileErr.message);
+          // Continue anyway - the trigger will create it
+        }
 
         setUser(authData.user);
-        await fetchUserProfile(authData.user.id);
+        
+        // Wait a moment for the trigger to create the profile
+        setTimeout(() => {
+          fetchUserProfile(authData.user.id);
+        }, 500);
       }
 
       return { success: true, user: authData.user };
