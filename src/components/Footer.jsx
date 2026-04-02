@@ -66,7 +66,7 @@ const Footer = () => {
             {/* MSME Registration */}
             <div className="bg-white rounded-lg p-3 shadow-md inline-block">
                <div className="flex flex-col items-center">
-                <img src="https://horizons-cdn.hostinger.com/b9f511a5-b437-4404-bbe4-e577af5d79fe/51c554d71b61dab09f3ece1ec3160ec1.png" alt="Ministry of MSME, Govt. of India" className="h-16 object-contain mb-2" />
+                <img src="https://i0.wp.com/smepost.com/wp-content/uploads/2016/03/msme-logo.jpg" alt="Ministry of MSME, Govt. of India" className="h-16 object-contain mb-2" />
                 <div className="text-center">
                   <p className="text-xs font-bold text-gray-900">Reg No.</p>
                   <p className="text-xs font-bold text-blue-800">WB-06-00-58769</p>
